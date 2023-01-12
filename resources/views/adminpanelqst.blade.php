@@ -10,6 +10,9 @@
         <div>
             <a href="{{route('adminpanel.quiz')}}"><h3>See Quizzes</h3></a>
         </div>
+        <div>
+            <a href="{{route('adminpanel.edit')}}"><h3>Add Question</h3></a>
+        </div>
     </div>
     
 <form action="">

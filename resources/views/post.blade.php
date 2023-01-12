@@ -7,6 +7,6 @@
     @else
     <div><font size="+1"><p>Author: Admin</p></font></div>
     @endif
-    <div align="center"><font size="+1"><p>Image:</p> <img src="{{$post->image_url}}" height="150px" width="150px">1/font></div>
+    <div align="center"><font size="+1"><p>Image:</p> <img src="{{$post->image_url}}" height="150px" width="150px"></font></div>
  <a href="{{ route("posts.quiz", ["id" => $post->id]) }}">Quizis Dawyeba</a>
 </html>

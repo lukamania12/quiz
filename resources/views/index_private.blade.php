@@ -45,7 +45,7 @@
                 <td align="center">{{ $post->created_at }}</td>
                 <td align="center"><h2><a href="{{ route("posts.post", ["id" => $post->id]) }}">Complete Quiz</a></h2></td>
                 <td align="center"><h2><a class="btn btn-danger" href="{{ route("posts.deleteqz", ["post" => $post->id]) }}">Delete</a></h2></td>
-                <td align="center"><h2><a href="{{ route("posts.edit", ["id" => $post->id], "") }}">Update</a></h2></td>
+                <td align="center"><h2><a href="{{ route("posts.edit", ["post" => $post->id]) }}">Update</a></h2></td>
                 <td align="center"><h2><a href="{{ route("admin.upload", ["post" => $post->id]) }}">Upload</a></h2></td>
                 <td>
                     <form action="" method="POST">
@@ -70,4 +70,5 @@
                 </td>
             </tr>
             @endforeach
+            <a href="{{route('posts.edit')}}">Create Quiz</a>
     </table>

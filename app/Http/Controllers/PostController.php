@@ -60,15 +60,23 @@ class PostController extends Controller
         return redirect()->route('posts.list'); 
     }
 
-    public function createorupdate(Request $request,Quiz $post, Quiz $post2) {
-        $question = $post->questions()->with(['answers' => function($query) use($post) {
-            $query->where('quiz_id',$post);
-        }])->get();
-        if ($request->input("quizname")) {
-            $post->fill($request->all())->save();
-            return redirect()->route('posts.prpost');
+    public function createorupdate(Request $request,Quiz $post) {
+        $question = $post->questions()->with('answers')->get();
+        if (count($request->all()) > 0) {
+            $data = $request->all();
+            $question->question = $data['question'];
+            $question->quiz_id = $data['quiz_id'];
+            $question->creator_id = $data['creator_id'];
+            $question->image_url = $data['image_url'];
+            $question->answers->answer = $data['answer'];
+            $question->answers->question_id = $data['question_id'];
+            $question->answers->quiz_id = $data['quiz_id'];
+            $question->answers->is_correct = $data['is_correct'];
+            $question->save();
+            return redirect()->route('adminpanel.qst');
     }
-    return view('edit', ["post" => $post]);
+
+    return view('edit', ["post" => $post,"question" => $question]);
 }
     public function adminpanelqst (Request $request) {
         $questions = Question::all();
@@ -81,9 +89,17 @@ class PostController extends Controller
     }
     public function adminpaneledit (Request $request,Question $post) {
         if ($request->input("quiz_id")) {
-            $post->fill($request->all())->save();
+            $data = $request->all();
+            $post->quiz_id = $data['quiz_id'];
+            $post->question = $data['question'];
+            $post->image_url = $data['image_url'];
+            $post->creator_id = 1;
+            $post->save();
             return redirect()->route('adminpanel.qst');
     }
    return view('adminedit', ["post" => $post]);
+    }
+    public function correctanswers () {
+        return view('correctanswers');
     }
 }

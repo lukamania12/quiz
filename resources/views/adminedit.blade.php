@@ -9,7 +9,7 @@
             <input type="text"  name="image_url" class="form-control" id="editimage" placeholder="Image URL(Please Enter Correct Image URL)">
         </div>
         <div class="mb-3">
-            <label for="editbody" class="form-label">Body</label>
+            <label for="editbody" class="form-label">Question</label>
             <textarea name="question" class="form-control" id="editbody" rows="3">
                 {{ $post->question}}
             </textarea>
@@ -26,9 +26,7 @@
         </tr>
     <tr>
     <td align="center">
-            <input type="number" name="quiz_id" class="form-control" value = "{{$post->quiz_id}}" id="editquizid" placeholder="Quiz ID">
-            <input type="hidden" id="iurl" name="image_url" value="{{$post->image_url}}">
-            <input type="hidden" id="qst" name="question" value="{{$post->question}}"></td>
+            <input type="number" min="1" name="quiz_id" class="form-control" value = "{{$post->quiz_id}}" id="editquizid" placeholder="Quiz ID"></td>
     <td align="center">{{$post->question}}</td>
     <td align="center">{{$post->created_at}}</td>
     </tr>

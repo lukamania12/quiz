@@ -7,6 +7,7 @@
   <tr>
     <th>
     <font size="+1"><h2>{{$questions->question}}</h2></font>
+    <img src="{{$post->image_url}}" height="300px" width="300px">
     </th>
     <th width="280px"><font size="+1">Questions {{$variable}}/{{$total}}</font></th>
   </tr>
@@ -21,3 +22,4 @@
   </tr>
 </table>
 @endforeach
+<a href="{{ route("final") }}">Quizis Damtavreba</a>
